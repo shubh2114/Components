@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .accordian {
+      /* text-align: center; */
+      margin: 12px auto;
+      width: 50vw;
+    }
+
+
+    .non-hidden > .hidden-box{
+      display: block;
+    }
+
+    .accord {
+      margin: 12px;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      padding: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.242);
+    }
+
+    .non-hidden{
+      border-top: 3px solid green;
+    }
+
+
+    .non-hidden > .header{
+      color: green;
+    }
+
+    .hidden-box{
+      margin-top: 7px;
+      padding-left: 58px;
+      padding-right: 24px;
+      display: none;
+    }
+
+    .hidden-box > ul {
+      margin: 14px;
+      line-height: 1.50;
+      color: rgb(96, 96, 96);
+      
+    }
+
+
+
+    .header {
+      display: grid;
+      grid-template-columns: 24px auto 24px;
+      gap: 30px;
+      font-size: 24px;
+    }
+
+    .icon {
+      height: 24px;
+      width: 24px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="accordian ">
+      <div div class="accord ">
+        <div class="header">
+          <p class="number">01</p>
+          <p class="heading">Where are these chairs assembled ?</p>
+          <p class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m19.5 8.25-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </p>
+        </div>
+        <div class="hidden-box ">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+            non debitis quasi enim necessitatibus? Soluta officia ipsam tempore
+            unde sed.
+          </p>
+          <ul>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+          </ul>
+        </div>
+      </div>      
+   
+
+
+      <div class="accord">
+        <div class="header">
+          <p class="number">02</p>
+          <p class="heading">How long do I have to return my chair?</p>
+          <p class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m19.5 8.25-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </p>
+        </div>
+        <div class="hidden-box ">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+            non debitis quasi enim necessitatibus? Soluta officia ipsam tempore
+            unde sed.
+          </p>
+          <ul>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+          </ul>
+        </div>
+      </div>      
+   
+
+
+      <div class="accord">
+        <div class="header">
+          <p class="number">03</p>
+          <p class="heading">Do you ship to countries outside EU ?</p>
+          <p class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m19.5 8.25-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </p>
+        </div>
+        <div class="hidden-box">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
+            non debitis quasi enim necessitatibus? Soluta officia ipsam tempore
+            unde sed.
+          </p>
+          <ul>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+          </ul>
+        </div>
+      </div>      
+      </div>
+    </div>
+    </div>
+  </div>
+  <script>
+const accord=document.querySelectorAll('.accord')
+accord.forEach((acc)=>{
+  const icon=acc.querySelector('.icon')
+  icon.addEventListener('click', function (){
+    acc.classList.toggle('non-hidden')
+  })
+
+})
+  </script>
+  </body>
+</html>
