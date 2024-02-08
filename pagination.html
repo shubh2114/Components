@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(33, 187, 154);
+        color: rgb(9, 109, 87);
+        font: 22px "Open Sans", sans-serif;
+        font-weight: 600;
+      }
+
+      .container {
+        height: 55px;
+        background-color: rgb(197, 243, 234);
+        display: flex;
+        align-items: center;
+        border-radius: 28.5px;
+        padding: 0px 10px;
+        box-shadow: 0 0 20px rgba(5, 75, 31, 0.54);
+      }
+
+      .container > ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+      }
+
+      .btn {
+        width: 75px;
+        height: 40px;
+        padding: 0px 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+      }
+
+      .numb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 15px;
+        width: 33px;
+        height: 33px;
+        /* text-align: center; */
+        /* border: 2px solid black; */
+        border-radius: 50%;
+      }
+
+      .dots {
+        margin: 0 15px;
+      }
+
+      .arrow {
+        height: 16px;
+        width: 20px;
+        /* font-weight: 500; */
+      }
+
+      .next {
+        border-radius: 5px 20px 20px 5px;
+      }
+
+      .prev {
+        border-radius: 20px 5px 5px 20px;
+      }
+
+      .active,
+      .numb:hover,
+      .btn:hover {
+        background-color: rgb(33, 187, 154);
+        color: rgb(197, 243, 234);
+        cursor: pointer;
+        box-shadow: 0 0 20px rgba(5, 75, 31, 0.54);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul>
+        <!-- <li class="prev btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="arrow"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
+          Prev
+        </li>
+        <li class="numb">1</li>
+        <li class="dots">...</li>
+        <li class="numb">4</li>
+        <li class="numb">5</li>
+        <li class="numb">6</li>
+        <li class="dots">...</li>
+        <li class="numb">7</li>
+        <li class="next btn">
+          Next
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="arrow"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </li> -->
+      </ul>
+    </div>
+    <script>
+      const element = document.querySelector(".container ul");
+      let totalPage = 20;
+      let page = 10;
+      element.innerHTML = createPagination(totalPage, page);
+      function createPagination(totalPage, page) {
+        console.log(totalPage, page);
+        let liTag = "";
+        let active;
+        let beforePage = page - 1;
+        let afterPage = page + 1;
+        if (page > 1) {
+          liTag += `<li class="prev btn" onclick='createPagination(totalPage, ${
+            page - 1
+          })'>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="arrow"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 19.5 8.25 12l7.5-7.5"
+                  />
+                </svg>
+                Prev
+              </li>`;
+        }
+
+        if (page > 2) {
+          liTag += `<li class="numb">1</li>`;
+        }
+        if (page > 3) {
+          liTag += `<li class="dots">...</li>`;
+        }
+        if (page == totalPage) {
+          beforePage = beforePage - 2;
+        } else if (page == totalPage - 1) {
+          beforePage = beforePage - 1;
+        }
+
+        for (var plength = beforePage; plength <= afterPage; plength++) {
+          console.log(beforePage);
+          if (plength > totalPage) {
+            continue;
+          }
+          if (plength == 0) {
+            plength = plength + 1;
+          }
+          if (page == plength) {
+            active = "active";
+          } else {
+            active = "";
+          }
+          liTag += `<li class="numb ${active}" "><span>${plength}</span></li>`;
+        }
+
+        if (page < totalPage - 1) {
+          if (page < totalPage - 2) {
+            liTag += `<li class="dots"><span>...</span></li>`;
+          }
+          liTag += `<li class="last numb" "><span>${totalPage}</span></li>`;
+        }
+
+        if (page < totalPage) {
+          liTag += `<li class="next btn" onclick='createPagination(totalPage, ${
+            page + 1
+          })'>
+            Next
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="arrow"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </li>`;
+        }
+        element.innerHTML = liTag;
+        return liTag;
+      }
+    </script>
+  </body>
+</html>
